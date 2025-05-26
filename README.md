@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/89d96170-e039-4d3d-9640-0fdc3358a833
 
 ```lua
 { "nvzone/volt" , lazy = true },
-{ "nvzone/menu" , lazy = true },
+{ "anonymous-17-03/menu" , lazy = true },
 ```
 
 ## Usage
