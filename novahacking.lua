@@ -1,7 +1,18 @@
+local hl = vim.api.nvim_set_hl
+
+-- Paleta pastel
+hl(0, "PastelRose", { fg = "#d36a60" })
+hl(0, "PastelGreen", { fg = "#81c995" })
+hl(0, "PastelPurple", { fg = "#d7aefb" })
+hl(0, "PastelOrange", { fg = "#ee9f4f" })
+hl(0, "PastelYellow", { fg = "#ffd274" })
+hl(0, "PastelTeal", { fg = "#a7ffeb" })
+
 return {
 
 	{
 		name = "󰈔  Formatear Archivo",
+		hl = "PastelPurple",
 		cmd = function()
 			local ok, conform = pcall(require, "conform")
 			if ok then
@@ -15,18 +26,21 @@ return {
 
 	{
 		name = "󰘦  Acciones de Código",
+		hl = "PastelPurple",
 		cmd = vim.lsp.buf.code_action,
 		rtxt = "<leader>ca",
 	},
 
 	{
 		name = "󰞋  Ir a definición",
+		hl = "PastelPurple",
 		cmd = vim.lsp.buf.definition,
 		rtxt = "gd",
 	},
 
 	{
 		name = "󰜢  Ver Referencias",
+		hl = "PastelPurple",
 		cmd = vim.lsp.buf.references,
 		rtxt = "gr",
 	},
@@ -37,6 +51,7 @@ return {
 
 	{
 		name = "󰈬  Mostrar Errores",
+		hl = "PastelRose",
 		cmd = function()
 			local ok, trouble = pcall(require, "trouble")
 			if ok then
@@ -45,7 +60,7 @@ return {
 				vim.diagnostic.open_float()
 			end
 		end,
-		rtxt = "<leader>xx",
+		rtxt = "<leader>x",
 	},
 
 	{
@@ -75,22 +90,25 @@ return {
 	},
 
 	{
-		name = "󰘳  Terminal en proyecto",
+		name = "  Terminal Horizontal",
 		hl = "ExRed",
 		cmd = function()
-			local cwd = vim.fn.expand("%:p:h")
 			local Terminal = require("toggleterm.terminal").Terminal
-			local term = Terminal:new({
-				cmd = vim.o.shell,
-				dir = cwd,
-				direction = "float",
-				float_opts = {
-					border = "double",
-				},
-			})
+			local term = Terminal:new({ direction = "horizontal" })
 			term:toggle()
 		end,
-		rtxt = "<leader>tp",
+		rtxt = "<leader>th",
+	},
+
+	{
+		name = "  Terminal Vertical",
+		hl = "ExRed",
+		cmd = function()
+			local Terminal = require("toggleterm.terminal").Terminal
+			local term = Terminal:new({ direction = "vertical" })
+			term:toggle()
+		end,
+		rtxt = "<leader>tv",
 	},
 
 	{
@@ -99,6 +117,7 @@ return {
 
 	{
 		name = "󰈞  Buscar Archivos",
+		hl = "PastelYellow",
 		cmd = function()
 			require("telescope.builtin").find_files()
 		end,
@@ -107,6 +126,7 @@ return {
 
 	{
 		name = "󰊄  Buscar en Texto",
+		hl = "PastelYellow",
 		cmd = function()
 			require("telescope.builtin").live_grep()
 		end,
@@ -115,6 +135,7 @@ return {
 
 	{
 		name = "󱎸  Buscar Buffers",
+		hl = "PastelYellow",
 		cmd = function()
 			require("telescope.builtin").buffers()
 		end,
@@ -152,29 +173,54 @@ return {
 
 	{
 		name = "󰈙  Copiar Todo",
+		hl = "PastelTeal",
 		cmd = "%y+",
 		rtxt = "<C-c>",
 	},
 
 	{
 		name = "󰆴  Borrar Todo",
+		hl = "PastelTeal",
 		cmd = "%d",
 		rtxt = "dc",
 	},
 
 	{
-		name = "󰸱  Previsualizar Markdown",
-		cmd = function()
-			vim.cmd("MarkdownPreview")
-		end,
-		rtxt = "<leader>md",
-	},
-
-	{
 		name = "󰏘  Selector de Color",
+		hl = "PastelOrange",
 		cmd = function()
 			require("minty.huefy").open()
 		end,
 		rtxt = "<leader>cp",
+	},
+
+	{
+		name = "separator",
+	},
+
+	{
+		name = "󰸱  Ver Markdown (Glow)",
+		hl = "PastelGreen",
+		cmd = function()
+			vim.cmd("Glow")
+		end,
+		rtxt = "<leader>mg",
+	},
+	{
+		name = "󰸱  Ver Markdown (Peek)",
+		hl = "PastelGreen",
+		cmd = function()
+			require("peek").open()
+		end,
+		rtxt = "<leader>mp",
+	},
+
+	{
+		name = "󰸱  Ver Markdown (MkPreview)",
+		hl = "PastelGreen",
+		cmd = function()
+			vim.cmd("MarkdownPreview")
+		end,
+		rtxt = "<leader>mm",
 	},
 }
