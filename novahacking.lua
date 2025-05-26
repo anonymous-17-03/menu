@@ -60,6 +60,7 @@ return {
 
 	{
 		name = "  Terminal flotante",
+		hl = "ExRed",
 		cmd = function()
 			local Terminal = require("toggleterm.terminal").Terminal
 			local term = Terminal:new({
@@ -75,6 +76,7 @@ return {
 
 	{
 		name = "󰘳  Terminal en proyecto",
+		hl = "ExRed",
 		cmd = function()
 			local cwd = vim.fn.expand("%:p:h")
 			local Terminal = require("toggleterm.terminal").Terminal
