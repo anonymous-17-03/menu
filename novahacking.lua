@@ -195,6 +195,20 @@ return {
 	},
 
 	{
+		name = "  Practica con el teclado",
+		hl = "PastelOrange",
+		cmd = "Typr",
+		rtxt = "tr",
+	},
+
+	{
+		name = "󰕮  Estadísticas del teclado",
+		hl = "PastelOrange",
+		cmd = "TyprStats",
+		rtxt = "td",
+	},
+
+	{
 		name = "separator",
 	},
 
